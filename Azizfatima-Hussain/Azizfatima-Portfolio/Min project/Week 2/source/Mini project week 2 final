@@ -1,0 +1,179 @@
+products = ["Bubble Tea", "Pizza", "Dumplings", "Sandwiches"]
+orders = []
+
+order_status_options = ["preparing", "dispatched", "delivered"]
+{
+    'customer_name': 'John Jones',
+    'customer_address': '123 Main Street',
+    'customer_phone': '07123456789',
+    'status': 'preparing'
+}
+def print_main_menu():
+    print("\nMain Menu")
+    print("1. Products Menu")
+    print("2. Orders Menu")
+    print("0. Exit")
+
+def print_products_menu():
+    print("\nProducts Menu")
+    print("1. View Products")
+    print("2. Add Product")
+    print("3. Update Product")
+    print("4. Delete Product")
+    print("0. Return to Main Menu")
+
+def print_orders_menu():
+    print("\nOrders Menu")
+    print("1. View Orders")
+    print("2. Create Order")
+    print("3. Update Order Status")
+    print("4. Update Order Info")
+    print("5. Delete Order")
+    print("0. Return to Main Menu")
+
+def view_products():
+    print("\nProducts List:")
+    for i, product in enumerate(products):
+        print(f"{i}. {product}")
+
+def view_orders():
+    print("\nOrders List:")
+    for i, order in enumerate(orders):
+        print(f"{i}. {order}")
+
+def add_product():
+    new_product = input("Enter new product name: ")
+    products.append(new_product)
+    print("Product added.")
+
+def update_product():
+    view_products()
+    try:
+        index = int(input("Enter index of product to update: "))
+        new_name = input("Enter new product name: ")
+        products[index] = new_name
+        print("Product updated.")
+    except (IndexError, ValueError):
+        print("Invalid index.")
+
+def delete_product():
+    view_products()
+    try:
+        index = int(input("Enter index of product to delete: "))
+        deleted = products.pop(index)
+        print(f"Deleted product: {deleted}")
+    except (IndexError, ValueError):
+        print("Invalid index.")
+
+def create_order():
+    name = input("Customer name: ")
+    address = input("Customer address: ")
+    phone = input("Customer phone: ")
+    order = {
+        "customer_name": name,
+        "customer_address": address,
+        "customer_phone": phone,
+        "status": "preparing"
+    }
+    orders.append(order)
+    print("Order added.")
+
+    orders.append(order)
+    print("Order added.")
+
+def create_order():
+    name = input("Customer name: ")
+    address = input("Customer address: ")
+    phone = input("Customer phone: ")
+    order = {
+        "customer_name": name,
+        "customer_address": address,
+        "customer_phone": phone,
+        "status": "preparing"
+    }
+    orders.append(order)
+    print("Order added.")
+
+def update_order_status():
+    view_orders()
+    try:
+        index = int(input("Enter order index to update status: "))
+        for i, status in enumerate(order_status_options):
+            print(f"{i}. {status}")
+        status_index = int(input("Choose new status index: "))
+        orders[index]["status"] = order_status_options[status_index]
+        print("Order status updated.")
+    except (IndexError, ValueError):
+        print("Invalid index or status.")
+
+def update_order_info():
+    view_orders()
+    try:
+        index = int(input("Enter order index to update: "))
+        for key in ["customer_name", "customer_address", "customer_phone"]:
+            current = orders[index][key]
+            new_value = input(f"{key.replace('_', ' ').title()} (current: {current}): ")
+            if new_value:
+                orders[index][key] = new_value
+        print("Order updated.")
+    except (IndexError, ValueError):
+        print("Invalid input.")
+
+def delete_order():
+    view_orders()
+    try:
+        index = int(input("Enter order index to delete: "))
+        deleted = orders.pop(index)
+        print(f"Deleted order for {deleted['customer_name']}.")
+    except (IndexError, ValueError):
+        print("Invalid index.")
+
+# Main Loop
+while True:
+    print_main_menu()
+    choice = input("Choose an option: ")
+
+    if choice == "0":
+        print("Goodbye!")
+        break
+
+    elif choice == "1":
+        while True:
+            print_products_menu()
+            prod_choice = input("Choose a product option: ")
+
+            if prod_choice == "0":
+                break
+            elif prod_choice == "1":
+                view_products()
+            elif prod_choice == "2":
+                add_product()
+            elif prod_choice == "3":
+                update_product()
+            elif prod_choice == "4":
+                delete_product()
+            else:
+                print("Invalid option.")
+
+    elif choice == "2":
+        while True:
+            print_orders_menu()
+            order_choice = input("Choose an order option: ")
+
+            if order_choice == "0":
+                break
+            elif order_choice == "1":
+                view_orders()
+            elif order_choice == "2":
+                create_order()
+            elif order_choice == "3":
+                update_order_status()
+            elif order_choice == "4":
+                update_order_info()
+            elif order_choice == "5":
+                delete_order()
+            else:
+                print("Invalid option.")
+
+    else:
+        print("Invalid option.")

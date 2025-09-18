@@ -1,0 +1,2 @@
+customer_name,customer_address,customer_phone,courier,status,items
+Alice Smith,"456 Queen Road, Manchester",07777777777,2,delivered,"0,1"

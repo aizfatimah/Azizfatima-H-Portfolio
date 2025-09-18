@@ -1,0 +1,13 @@
+Order 0:
+  Customer Name: John Jones
+  Address: 123 Main Street, London
+  Phone: 07987654321
+  Courier: 1
+  Status: preparing
+
+Order 1:
+  Customer Name: Alice Smith
+  Address: 456 Queen Road, Manchester
+  Phone: 07777777777
+  Courier: 2
+  Status: delivered

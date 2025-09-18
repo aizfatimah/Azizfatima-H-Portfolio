@@ -1,0 +1,3 @@
+customer_name,customer_address,customer_phone,courier,status,items
+Alice Smith,"456 Queen Road, Manchester",07777777777,2,delivered,"0,1"
+Bob Brown,"789 King Street, Birmingham",07888888888,3,cancelled,3
